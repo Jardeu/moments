@@ -16,7 +16,7 @@ As interfaces podem ser encontradas aqui: [UI Figma](https://www.figma.com/file/
 ## Como rodar o projeto
 1. **Clone o Repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/Jardeu/moments.git
 
 2. **Abra o Projeto no Android Studio**
    - Abra o Android Studio.
