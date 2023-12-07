@@ -8,10 +8,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/white"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -77,7 +79,8 @@
                     android:textColor="@color/white"
                     app:backgroundTint="@color/button_edit"
                     app:icon="@drawable/edit_icon"
-                    app:iconPadding="0dp" />
+                    app:iconPadding="0dp"
+                    app:iconTint="@color/white" />
 
                 <Button
                     android:id="@+id/btnDelete"
@@ -89,7 +92,8 @@
                     android:textColor="@color/white"
                     app:backgroundTint="@color/button_delete"
                     app:icon="@drawable/delete_icon"
-                    app:iconPadding="0dp" />
+                    app:iconPadding="0dp"
+                    app:iconTint="@color/white" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

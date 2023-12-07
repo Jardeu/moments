@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Memory {
     private String title, description, date, image;
+    private int id, category_id;
     public static List<Memory> memoriesList = new ArrayList<>();
 
     public Memory() {}
@@ -38,5 +39,21 @@ public class Memory {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

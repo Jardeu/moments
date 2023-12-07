@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.jardeu.moments.model.Memory;
-import com.jardeu.moments.model.Tag;
+import com.jardeu.moments.model.Category;
 
 public class DatabaseAdmin extends SQLiteOpenHelper {
     public DatabaseAdmin(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -16,8 +16,10 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE memories(_id INTEGER PRIMARY KEY, title TEXT, description TEXT, date TEXT, image TEXT)");
-        db.execSQL("CREATE TABLE tags(_id INTEGER PRIMARY KEY, name TEXT)");
+        db.execSQL("CREATE TABLE categories(id INTEGER PRIMARY KEY, name TEXT)");
+        db.execSQL(
+                "CREATE TABLE memories(id INTEGER PRIMARY KEY, title TEXT, description TEXT, date TEXT, " +
+                 "image TEXT, category_id INTEGER, FOREIGN KEY (category_id) REFERENCES categories(id))");
     }
 
     @Override
@@ -30,10 +32,12 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
             if (result != null && result.moveToFirst()) {
                 do {
                     Memory m = new Memory();
+                    m.setId(result.getInt(0));
                     m.setTitle(result.getString(1));
                     m.setDescription(result.getString(2));
                     m.setDate(result.getString(3));
                     m.setImage(result.getString(4));
+                    m.setCategory_id(result.getInt(5));
 
                     System.out.println(result.getString(0));
                     System.out.println(result.getString(1));
@@ -74,14 +78,15 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
         }
     }
 
-    public static void readTagsData(SQLiteDatabase db) {
-        try (Cursor result = db.rawQuery("SELECT * FROM tags", null)) {
+    public static void readCategoriesData(SQLiteDatabase db) {
+        try (Cursor result = db.rawQuery("SELECT * FROM categories", null)) {
             if (result != null && result.moveToFirst()) {
                 do {
-                    Tag t = new Tag();
-                    t.setName(result.getString(0));
+                    Category c = new Category();
+                    c.setId(result.getInt(0));
+                    c.setName(result.getString(1));
 
-                    Tag.tagsList.add(t);
+                    Category.categoriesList.add(c);
                 } while (result.moveToNext());
             }
         } catch (Exception e) {
@@ -93,15 +98,15 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
         }
     }
 
-    public static void saveTags(SQLiteDatabase db) {
+    public static void saveCategories(SQLiteDatabase db) {
         try {
-            db.delete("tags", null, null);
+            db.delete("categories", null, null);
 
-            for (Memory item : Memory.memoriesList) {
+            for (Category item : Category.categoriesList) {
                 ContentValues registro = new ContentValues();
-                registro.put("title", item.getTitle());
+                registro.put("name", item.getName());
 
-                db.insert("tags", null, registro);
+                db.insert("categories", null, registro);
             }
         } catch (Exception e) {
             e.printStackTrace();

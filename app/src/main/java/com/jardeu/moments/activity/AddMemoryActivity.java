@@ -2,17 +2,17 @@ package com.jardeu.moments.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jardeu.moments.R;
 import com.jardeu.moments.model.Memory;
+import com.jardeu.moments.model.Category;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,6 +36,7 @@ public class AddMemoryActivity extends AppCompatActivity {
     ImageView ivImage;
     Button btnSaveMemory;
     ImageButton btnAddImage, btnGoBack;
+    RadioGroup radioGroup;
 
     Memory memory = new Memory();
     Uri imageUri;
@@ -49,10 +51,19 @@ public class AddMemoryActivity extends AppCompatActivity {
         edDate = findViewById(R.id.edDate);
 
         ivImage = findViewById(R.id.ivImage);
+        radioGroup = findViewById(R.id.categoriesRadioGroup);
 
         btnAddImage = findViewById(R.id.btnAddImage);
         btnSaveMemory = findViewById(R.id.btnSaveMemory);
         btnGoBack = findViewById(R.id.btnGoToBack);
+
+        //LISTAR AS TAGS
+        for (Category t: Category.categoriesList) {
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(t.getName());
+
+            radioGroup.addView(radioButton);
+        }
 
         //ESCOLHER UMA IMAGEM DA GALERIA E ADICIONAR NO IMAGEVIEW
         ActivityResultLauncher<Intent> mGetContent = registerForActivityResult(
@@ -121,6 +132,20 @@ public class AddMemoryActivity extends AppCompatActivity {
             memory.setDescription(description);
             memory.setDate(date);
             memory.setImage(imagePath);
+
+            int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+
+            if (selectedRadioButtonId != -1){
+                RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
+
+                String selectedCategory = selectedRadioButton.getText().toString();
+
+                for (Category c: Category.categoriesList) {
+                    if (c.getName().equals(selectedCategory)){
+                        memory.setCategory_id(c.getId());
+                    }
+                }
+            }
 
             Memory.memoriesList.add(memory);
 

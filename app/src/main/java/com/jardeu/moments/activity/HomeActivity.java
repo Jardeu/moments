@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,16 +18,17 @@ import com.jardeu.moments.model.Memory;
 
 public class HomeActivity extends AppCompatActivity {
     FloatingActionButton btnAddMemory;
-    ImageButton btnListTags;
+    ImageButton btnListCategories;
     private RecyclerView recyclerView;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         btnAddMemory = findViewById(R.id.btnAddMemory);
-        btnListTags = findViewById(R.id.btnListTags);
+        btnListCategories = findViewById(R.id.btnListCategories);
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -42,6 +42,11 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, AddMemoryActivity.class);
             startActivity(intent);
         });
+
+        btnListCategories.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CategoryActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -50,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         DatabaseAdmin admin = new DatabaseAdmin(this, "MemoryDatabase", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
+        DatabaseAdmin.saveCategories(db);
         DatabaseAdmin.saveMemories(db);
     }
 }

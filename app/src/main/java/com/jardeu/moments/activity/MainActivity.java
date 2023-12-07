@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = admin.getWritableDatabase();
 
         DatabaseAdmin.readMemoriesData(db);
+        DatabaseAdmin.readCategoriesData(db);
 
         new Handler().postDelayed(new Runnable() {
             @Override
