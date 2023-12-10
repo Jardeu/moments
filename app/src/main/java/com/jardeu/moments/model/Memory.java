@@ -1,9 +1,10 @@
 package com.jardeu.moments.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Memory {
+public class Memory implements Serializable {
     private String title, description, date, image;
     private int id, category_id;
     public static List<Memory> memoriesList = new ArrayList<>();

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.CategoryViewHolder> {
 
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categories;
     public AdapterCategory(List<Category> categories) {
         this.categories = categories;
     }
@@ -56,13 +56,9 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Catego
                             mem.setCategory_id(-1);
                         }
                     }
-                    for (Category item: Category.categoriesList) {
-                        if (item.getId() == category.getId()){
-                            Category.categoriesList.remove(category);
-                        }
-                    }
+                    Category.categoriesList.remove(category);
 
-                    notifyItemRemoved(position);
+                    notifyItemRemoved(holder.getAdapterPosition());
                 }
             });
 

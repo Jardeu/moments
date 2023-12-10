@@ -57,7 +57,6 @@ public class AddMemoryActivity extends AppCompatActivity {
         btnSaveMemory = findViewById(R.id.btnSaveMemory);
         btnGoBack = findViewById(R.id.btnGoToBack);
 
-        //LISTAR AS TAGS
         for (Category t: Category.categoriesList) {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setText(t.getName());

@@ -3,6 +3,7 @@ package com.jardeu.moments.adapter;
 import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jardeu.moments.R;
+import com.jardeu.moments.activity.EditMemoryActivity;
 import com.jardeu.moments.activity.HomeActivity;
 import com.jardeu.moments.model.Category;
 import com.jardeu.moments.model.Memory;
@@ -26,9 +28,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
+    private Context mContext;
+    private List<Memory> memories;
 
-    private List<Memory> memories = new ArrayList<>();
-    public Adapter(List<Memory> memories) {
+    public Adapter(Context context, List<Memory> memories) {
+        mContext = context;
         this.memories = memories;
     }
 
@@ -53,7 +57,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.image.setImageBitmap(bitmap);
 
         holder.btnEdit.setOnClickListener(v -> {
-
+            Intent intent = new Intent(mContext, EditMemoryActivity.class);
+            intent.putExtra("memory_id", memory);
+            mContext.startActivity(intent);
         });
 
         holder.btnDelete.setOnClickListener(view -> {
@@ -64,13 +70,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    for (Memory item : Memory.memoriesList) {
-                        if (item.getId() == memory.getId()) {
-                            Memory.memoriesList.remove(item);
-                        }
-                    }
+                    Memory.memoriesList.remove(memory);
 
-                    notifyItemRemoved(position);
+                    notifyItemRemoved(holder.getAdapterPosition());
                 }
             }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                 @Override

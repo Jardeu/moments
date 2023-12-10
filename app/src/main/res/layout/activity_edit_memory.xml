@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".activity.AddMemoryActivity">
+    tools:context=".activity.EditMemoryActivity">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
@@ -18,10 +18,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleAddMemory">
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleEditMemory">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+            android:id="@+id/constraintLayout12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -29,16 +29,16 @@
             android:padding="24dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
+                android:id="@+id/constraintLayout11"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/tvLabelTitle"
+                app:layout_constraintBottom_toTopOf="@+id/tvLabelTitle2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/ivImage"
+                    android:id="@+id/ivImage2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
                     app:srcCompat="@drawable/no_image" />
 
                 <ImageButton
-                    android:id="@+id/btnAddImage"
+                    android:id="@+id/btnEditImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/primary"
@@ -60,22 +60,23 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tvLabelTitle"
+                android:id="@+id/tvLabelTitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="casual"
                 android:text="@string/title_label"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/edTitle"
+                app:layout_constraintBottom_toTopOf="@+id/edTitle2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+                app:layout_constraintTop_toBottomOf="@id/constraintLayout11" />
 
             <EditText
-                android:id="@+id/edTitle"
+                android:id="@+id/edTitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -87,11 +88,11 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelTitle2"
                 tools:ignore="VisualLintTextFieldSize" />
 
             <TextView
-                android:id="@+id/tvLabelDescription"
+                android:id="@+id/tvLabelDescription2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -100,13 +101,13 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/edDescription"
+                app:layout_constraintBottom_toTopOf="@id/edDescription2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edTitle" />
+                app:layout_constraintTop_toBottomOf="@id/edTitle2" />
 
             <EditText
-                android:id="@+id/edDescription"
+                android:id="@+id/edDescription2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -119,11 +120,11 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelDescription"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelDescription2"
                 tools:ignore="VisualLintTextFieldSize" />
 
             <TextView
-                android:id="@+id/tvLabelDate"
+                android:id="@+id/tvLabelDate2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -132,13 +133,13 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/edDate"
+                app:layout_constraintBottom_toTopOf="@id/edDate2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edDescription" />
+                app:layout_constraintTop_toBottomOf="@id/edDescription2" />
 
             <EditText
-                android:id="@+id/edDate"
+                android:id="@+id/edDate2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -150,11 +151,11 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelDate"
+                app:layout_constraintTop_toBottomOf="@id/tvLabelDate2"
                 tools:ignore="VisualLintTextFieldSize" />
 
             <TextView
-                android:id="@+id/tvLabelCategory"
+                android:id="@+id/tvLabelCategory2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -165,25 +166,25 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edDate" />
+                app:layout_constraintTop_toBottomOf="@id/edDate2" />
 
             <RadioGroup
-                android:id="@+id/categoriesRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/categoryRadioGroup2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelCategory"></RadioGroup>
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelCategory2" />
 
             <Button
-                android:id="@+id/btnSaveMemory"
+                android:id="@+id/btnUpdateMemory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/primary"
-                android:text="@string/add_button"
+                android:text="@string/confirm_button"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:cornerRadius="8dp"
@@ -191,37 +192,37 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/categoriesRadioGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/categoryRadioGroup2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <TextView
-        android:id="@+id/tvTitleAddMemory"
+        android:id="@+id/tvTitleEditMemory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="casual"
-        android:text="@string/title_add_memory"
+        android:text="@string/title_edit_memory"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/constraintLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btnGoToBack"
+            android:id="@+id/btnGoToBack4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -231,12 +232,12 @@
             android:scaleType="center"
             android:src="@drawable/ic_go_to_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvAppTitle2"
+            app:layout_constraintStart_toStartOf="@id/tvAppTitle5"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/tvAppTitle2"
+            android:id="@+id/tvAppTitle5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -247,14 +248,14 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvAppSubtitle2"
+            app:layout_constraintBottom_toTopOf="@+id/tvAppSubtitle5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvAppSubtitle2"
+            android:id="@+id/tvAppSubtitle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -267,8 +268,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAppTitle2" />
-
+            app:layout_constraintTop_toBottomOf="@+id/tvAppTitle5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

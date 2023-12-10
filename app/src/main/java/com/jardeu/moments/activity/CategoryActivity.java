@@ -39,8 +39,7 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         btnGoBack.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, HomeActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         btnAddCategory.setOnClickListener(v -> {

@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        Adapter adapter = new Adapter(Memory.memoriesList);
+        Adapter adapter = new Adapter(this, Memory.memoriesList);
         recyclerView.setAdapter(adapter);
 
         btnAddMemory.setOnClickListener(v -> {
