@@ -39,20 +39,11 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
                     m.setImage(result.getString(4));
                     m.setCategory_id(result.getInt(5));
 
-                    System.out.println(result.getString(0));
-                    System.out.println(result.getString(1));
-                    System.out.println(result.getString(2));
-                    System.out.println(result.getString(3));
-
                     Memory.memoriesList.add(m);
                 } while (result.moveToNext());
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (db != null) {
-                db.close();
-            }
         }
     }
 
@@ -62,6 +53,7 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
 
             for (Memory item : Memory.memoriesList) {
                 ContentValues registro = new ContentValues();
+                registro.put("id", item.getId());
                 registro.put("title", item.getTitle());
                 registro.put("description", item.getDescription());
                 registro.put("date", item.getDate());
@@ -71,10 +63,6 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (db != null) {
-                db.close();
-            }
         }
     }
 
@@ -91,10 +79,6 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (db != null) {
-                db.close();
-            }
         }
     }
 
@@ -104,16 +88,13 @@ public class DatabaseAdmin extends SQLiteOpenHelper {
 
             for (Category item : Category.categoriesList) {
                 ContentValues registro = new ContentValues();
+                registro.put("id", item.getId());
                 registro.put("name", item.getName());
 
                 db.insert("categories", null, registro);
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (db != null) {
-                db.close();
-            }
         }
     }
 }

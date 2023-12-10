@@ -1,8 +1,12 @@
 package com.jardeu.moments.adapter;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jardeu.moments.R;
 import com.jardeu.moments.model.Category;
+import com.jardeu.moments.model.Memory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +41,41 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Catego
 
         Category category = categories.get(position);
         holder.name.setText( category.getName() );
+
+        holder.btnDelete.setOnClickListener(view -> {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setTitle("Apagar categoria");
+            builder.setMessage("Tem certeza que deseja apagar essa categoria? " +
+                    "As memórias relacionadas a esta categoria não serão apagadas.");
+            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    for (Memory mem: Memory.memoriesList) {
+                        if (mem.getCategory_id() == category.getId()){
+                            mem.setCategory_id(-1);
+                        }
+                    }
+                    for (Category item: Category.categoriesList) {
+                        if (item.getId() == category.getId()){
+                            Category.categoriesList.remove(category);
+                        }
+                    }
+
+                    notifyItemRemoved(position);
+                }
+            });
+
+            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        });
     }
 
     @Override
@@ -45,11 +85,13 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Catego
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder{
         private TextView name;
+        private ImageButton btnDelete;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.tvName);
+            btnDelete = itemView.findViewById(R.id.btnDelete2);
         };
 
     }

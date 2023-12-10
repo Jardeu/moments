@@ -5,6 +5,7 @@
     <string name="title_edit_memory">Editar memória</string>
     <string name="title_categories">Categorias</string>
     <string name="title_add_category">Adiconar nova tag</string>
+    <string name="title_memory">Memórias</string>
     <!-- Label dos EditText -->
     <string name="name_label">Nome:</string>
     <string name="title_label">Título:</string>
@@ -15,5 +16,5 @@
     <string name="add_button">Adicionar</string>
     <string name="confirm_button">Concluído</string>
     <string name="edit_btn">Editar</string>
-    <string name="delete_btn">Deletar</string>
+    <string name="delete_btn">Apagar</string>
 </resources>

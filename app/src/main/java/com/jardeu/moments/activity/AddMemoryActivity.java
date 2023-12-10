@@ -103,6 +103,7 @@ public class AddMemoryActivity extends AppCompatActivity {
     }
 
     private void save(){
+        int id = Memory.memoriesList.size()+1;
         String title = edTitle.getText().toString();
         String description = edDescription.getText().toString();
         String date = edDate.getText().toString();
@@ -128,6 +129,7 @@ public class AddMemoryActivity extends AppCompatActivity {
         }
 
         if(!title.isEmpty() || !imagePath.isEmpty()){
+            memory.setId(id);
             memory.setTitle(title);
             memory.setDescription(description);
             memory.setDate(date);
@@ -149,7 +151,7 @@ public class AddMemoryActivity extends AppCompatActivity {
 
             Memory.memoriesList.add(memory);
 
-            Toast.makeText(this, "Memória salva com sucesso", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Nova Memória salva", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(AddMemoryActivity.this, HomeActivity.class);
             startActivity(intent);

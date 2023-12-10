@@ -57,5 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
         DatabaseAdmin.saveCategories(db);
         DatabaseAdmin.saveMemories(db);
+
+        db.close();
     }
 }

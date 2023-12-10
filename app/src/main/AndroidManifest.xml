@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Moments"
         tools:targetApi="31">
         <activity
+            android:name=".activity.AddCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CategoryActivity"
             android:exported="false" />
         <activity

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -17,7 +18,7 @@ import com.jardeu.moments.model.Memory;
 
 public class CategoryActivity extends AppCompatActivity {
     FloatingActionButton btnAddCategory;
-    ImageButton btnDelete, btnGoBack;
+    ImageButton btnGoBack;
     private RecyclerView recyclerView;
 
     @SuppressLint("MissingInflatedId")
@@ -27,7 +28,6 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         btnAddCategory = findViewById(R.id.btnAddCategory);
-        btnDelete = findViewById(R.id.btnDelete2);
         btnGoBack = findViewById(R.id.btnGoToBack2);
 
         recyclerView = findViewById(R.id.recyclerView2);
@@ -39,8 +39,13 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         btnGoBack.setOnClickListener(v -> {
-            finish();
+            Intent intent = new Intent(CategoryActivity.this, HomeActivity.class);
+            startActivity(intent);
         });
 
+        btnAddCategory.setOnClickListener(v -> {
+            Intent intent = new Intent(CategoryActivity.this, AddCategoryActivity.class);
+            startActivity(intent);
+        });
     }
 }
