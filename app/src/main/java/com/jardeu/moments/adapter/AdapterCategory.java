@@ -16,7 +16,6 @@ import com.jardeu.moments.R;
 import com.jardeu.moments.model.Category;
 import com.jardeu.moments.model.Memory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.CategoryViewHolder> {

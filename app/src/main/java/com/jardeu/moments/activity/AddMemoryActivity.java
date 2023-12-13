@@ -106,28 +106,28 @@ public class AddMemoryActivity extends AppCompatActivity {
         String title = edTitle.getText().toString();
         String description = edDescription.getText().toString();
         String date = edDate.getText().toString();
-        String imagePath;
+        String imagePath = "";
 
-        try {
-            InputStream inputStream = getContentResolver().openInputStream(imageUri);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+        if(imageUri != null || !title.isEmpty()) {
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
-            File pasta = new File(getFilesDir(), "memoryImages");
-            if (!pasta.exists()) {
-                pasta.mkdir();
+                File pasta = new File(getFilesDir(), "memoryImages");
+                if (!pasta.exists()) {
+                    pasta.mkdir();
+                }
+
+                File imageFile = new File(pasta, "image_" + System.currentTimeMillis() + ".png");
+                FileOutputStream fos = new FileOutputStream(imageFile);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                fos.close();
+
+                imagePath = imageFile.getAbsolutePath();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
-            File imageFile = new File(pasta, "image_" + System.currentTimeMillis() + ".png");
-            FileOutputStream fos = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.close();
-
-            imagePath = imageFile.getAbsolutePath();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        if(!title.isEmpty() || !imagePath.isEmpty()){
             memory.setId(id);
             memory.setTitle(title);
             memory.setDescription(description);
@@ -155,7 +155,7 @@ public class AddMemoryActivity extends AppCompatActivity {
             Intent intent = new Intent(AddMemoryActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
-        }else{
+        } else {
             Toast.makeText(this, "Adicione uma imagem e um título", Toast.LENGTH_LONG).show();
         }
     }
