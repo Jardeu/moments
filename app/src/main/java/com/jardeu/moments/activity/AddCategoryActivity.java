@@ -51,6 +51,7 @@ public class AddCategoryActivity extends AppCompatActivity {
 
             Intent intent = new Intent(AddCategoryActivity.this, CategoryActivity.class);
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(this, "Adicione um nome para a categoria", Toast.LENGTH_LONG).show();
         }

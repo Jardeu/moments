@@ -154,6 +154,7 @@ public class AddMemoryActivity extends AppCompatActivity {
 
             Intent intent = new Intent(AddMemoryActivity.this, HomeActivity.class);
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(this, "Adicione uma imagem e um título", Toast.LENGTH_LONG).show();
         }
